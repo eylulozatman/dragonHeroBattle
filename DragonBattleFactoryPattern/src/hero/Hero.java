@@ -1,14 +1,27 @@
 package hero;
 
+import hero.Armor.Armor;
+import hero.weapon.weapon;
+
 public class Hero {
     String name;
     weapon weapon;
     int hp;
-    public Hero(String name, hero.weapon weapon)
+    Armor armor;
+    public Hero(String name, hero.weapon.weapon weapon,Armor armor)
     {
         this.name = name;
         this.weapon = weapon;
-        this.hp = 2000;
+        this.hp = 2000 + armor.getDef();
+    }
+
+    public Armor getArmor()
+    {
+        return armor;
+    }
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
     }
 
     public int getHp() {
@@ -27,11 +40,11 @@ public class Hero {
         this.name = name;
     }
 
-    public hero.weapon getWeapon() {
+    public hero.weapon.weapon getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(hero.weapon weapon) {
+    public void setWeapon(hero.weapon.weapon weapon) {
         this.weapon = weapon;
     }
 }

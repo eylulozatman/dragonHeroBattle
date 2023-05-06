@@ -1,10 +1,15 @@
 package game;
 
-import dragon.*;
+import dragon.DragonMaker;
+import dragon.FireDragonMaker;
+import dragon.IceDragonMaker;
+import dragon.ThunderDragonMaker;
+import hero.Armor.Armor;
+import hero.Armor.ArmorMaker;
 import hero.Hero;
-import hero.hammer;
-import hero.sword;
-import hero.weapon;
+import hero.weapon.hammer;
+import hero.weapon.sword;
+import hero.weapon.weapon;
 
 import java.util.Scanner;
 
@@ -42,7 +47,7 @@ public class play {
         String heroName= sc.next();
         System.out.println(" Now, select a weapon");
         System.out.println("1- SWORD");
-        System.out.println("2-HAMMER");
+        System.out.println("2- HAMMER");
         int weaponName = sc.nextInt();
         weapon weapon = null;
         if(weaponName == 1)
@@ -60,13 +65,19 @@ public class play {
         {
             System.out.println("you entered a wrong input");
         }
-
-         Hero hero = new Hero(heroName,weapon);
+        System.out.println("Now,select an Armor");
+        System.out.println("1- Shiny Armor");
+        System.out.println("2- Gold Armor");
+        int ArmorChoose = sc.nextInt();
+        ArmorMaker armorMaker = new ArmorMaker();
+        Armor armor = armorMaker.createArmor(ArmorChoose);
+        Hero hero = new Hero(heroName,weapon,armor);
         hero.setWeapon(weapon);
         hero.setName(heroName);
+        hero.setArmor(armor);
         System.out.println("battle is starting");
         System.out.println("Dragon: " + dragonMaker.getDragon().getElement() +" "+ dragonMaker.getDragon().getDragonType());
-        System.out.println("Hero: " + heroName + " with " + weapon.getName());
+        System.out.println("Hero: " + heroName + " with " + weapon.getName() + "equipped" + armor.getName());
         Fight fight = new Fight();
         fight.startFight(dragonMaker.getDragon(), hero);
 

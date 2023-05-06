@@ -24,12 +24,12 @@ public class Fight {
         while (hero.getHp() > 0 && dragon.getHp() > 0)
         {
             try {
-                Thread.sleep(2000); // Pause for 1 second
+                Thread.sleep(2000); // Pause for 2 seconds
             } catch (InterruptedException e) {
                 // Handle the exception if necessary
             }
              damageNum =  random.nextInt(5); // select damage number
-             Char =  chooseChar.nextInt(3); // select character
+             Char =  chooseChar.nextInt(2); // select character
              powertyp = powerType.nextInt(4);
             if (Char == 0)// dragon attack
             {
